@@ -1,0 +1,35 @@
+employeeDataJson.txt dosyasından verileri çekiyoruz.
+{
+  "employees": [
+    {
+      "firstName": "Gul",
+      "lastName": "Krmoglu",
+      "age": 35,
+      "position": "Software Engineer"
+    },
+    {
+      "firstName": "Busra",
+      "lastName": "Bektas",
+      "age": 34,
+      "position": "Data Scientist"
+    }
+  ]
+}
+
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+import json
+
+with open("C:\\Users\\pc\\Desktop\\json\\data\\employeeDataJson.txt", "r") as file:
+    data = json.load(file)
+
+employees = data["employees"]
+
+for employee in employees:
+    print("First Name:", employee["firstName"])
+    print("Last Name:", employee["lastName"])
+    print("Age:", employee["age"])
+    print("Position:", employee["position"])
+    print()

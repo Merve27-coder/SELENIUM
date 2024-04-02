@@ -62,6 +62,17 @@ class Test_Sauce:
                data.append(tupleData)
 
         return data   
+    
+    def readInvalidDataFromExcel():
+        excelFile = openpyxl.load_workbook(data/invalidLogin.xlsx)
+        sheet = excelFile["Sayfa1"]
+        rows = sheet.max_row
+        data = []
+        for i in range(1,rows):
+            username = sheet.cell(i,1).value
+            password = sheet.cell(i,2).value
+            data.append((username,password))
+        return data
        
     @pytest.mark.parametrize("product_name, product_price",getData()) 
     def test_add_to_cart(self, cart_product_name, cart_product_price):
